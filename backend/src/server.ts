@@ -24,15 +24,28 @@ import { verifyToken } from "./utils/jwt.ts";
 import { Types } from "mongoose";
 
 const app = express();
+app.use(express.json());
+
+const allowedOrigins = [
+  process.env.CLIENT_ORIGIN,
+  "http://localhost:5173",
+].filter((origin): origin is string => Boolean(origin));
 
 app.use(
   cors({
-    origin: process.env.CLIENT_ORIGIN ?? "http://localhost:5173",
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+
+      return callback(new Error(`Origin not allowed by CORS: ${origin}`));
+    },
     credentials: true,
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
   }),
 );
 
-app.use(express.json());
 app.use(cookieParser());
 
 const isProduction = process.env.NODE_ENV === "production";
