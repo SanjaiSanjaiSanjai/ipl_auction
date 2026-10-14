@@ -3,7 +3,7 @@ import interceptor from "./axiosInterceptor";
 
 const axiosClient = axios.create(
     {
-        baseURL: "http://localhost:4000",
+        baseURL: VITE_BASE_URL,
         withCredentials: true,
         headers: {
             "Content-Type": "application/json"
