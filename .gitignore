@@ -1,0 +1,14 @@
+.archify/
+.vscode/
+aichanges.md
+API_SOCKET_LIFECYCLE.md
+bug.md
+dummy.drawio
+improve.md
+backend/.env
+backend/node_modules/
+backend/README.md
+frontend/ipl-auction-app/.env
+frontend/ipl-auction-app/node_modules/
+frontend/ipl-auction-app/README.md
+.DS_Store

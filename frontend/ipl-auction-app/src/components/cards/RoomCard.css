@@ -1,0 +1,126 @@
+.room-card {
+  background: var(--surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  transition: box-shadow var(--transition-normal), border-color var(--transition-normal);
+}
+
+.room-card:hover {
+  box-shadow: var(--shadow-md);
+  border-color: #d0d6de;
+}
+
+.room-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-xs);
+}
+
+.room-card__name {
+  font-size: var(--font-size-lg);
+  font-weight: 650;
+  color: var(--text-primary);
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.room-card__id {
+  font-size: var(--font-size-sm);
+  color: var(--text-muted);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  letter-spacing: 0.3px;
+}
+
+.room-card__meta {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+}
+
+.room-card__label {
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-right: var(--spacing-xs);
+}
+
+.room-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: var(--spacing-sm);
+  padding-top: var(--spacing-sm);
+  border-top: 1px solid var(--border-color);
+}
+
+.room-card__privacy {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+}
+
+.privacy--private {
+  color: var(--accent-gold);
+}
+
+.privacy--public {
+  color: var(--primary-blue);
+}
+
+.room-card__join-btn {
+  padding: var(--spacing-xs) var(--spacing-md);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--text-light);
+  background: var(--primary-blue);
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background var(--transition-normal);
+}
+
+.room-card__join-btn:hover {
+  background: var(--primary-hover);
+}
+
+.room-card__badge {
+  font-size: 0.7rem;
+  font-weight: 650;
+  padding: 3px 10px;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.badge--waiting {
+  background: #f4efe4;
+  color: #6b5424;
+}
+
+.badge--team-selection {
+  background: #e8eef6;
+  color: #1e3a5f;
+}
+
+.badge--auction {
+  background: #e7f3ec;
+  color: #1b5e3b;
+}
+
+.badge--completed {
+  background: #eef0f3;
+  color: #4b5563;
+}
+
+.badge--default {
+  background: var(--border-color);
+  color: var(--text-secondary);
+}

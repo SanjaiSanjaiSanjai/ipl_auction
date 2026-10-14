@@ -1,0 +1,402 @@
+/* ======================================
+   IPL Auction Signup - Professional Styles
+   ====================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Martian+Mono:wght@400;500;600;700&display=swap");
+
+:root {
+  /* Color Palette — navy / slate dashboard */
+  --primary-dark: #15233b;
+  --primary-blue: #1e3a5f;
+  --primary-hover: #243f68;
+  --accent-gold: #9a7b3c;
+  --accent-gold-hover: #826632;
+  --text-primary: #1a2332;
+  --text-secondary: #5c6570;
+  --text-muted: #8b939c;
+  --text-light: #f7f8fa;
+  --border-color: #e2e6eb;
+  --surface: #ffffff;
+  --page-bg: #f4f6f8;
+  --sidebar-bg: #152033;
+  --sidebar-border: #243049;
+  --error-color: #b42318;
+  --error-bg: #fef3f2;
+  --success-color: #027a48;
+  --background: #ffffff;
+  --shadow-sm: 0 1px 2px rgba(21, 32, 51, 0.06);
+  --shadow-md: 0 4px 12px rgba(21, 32, 51, 0.08);
+  --shadow-lg: 0 12px 28px rgba(21, 32, 51, 0.10);
+
+  /* Typography */
+  --font-family: "Martian Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.5rem;
+  --font-size-2xl: 2rem;
+  --line-height-tight: 1.25;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+
+  /* Spacing */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+
+  /* Border Radius */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+
+  /* Transitions */
+  --transition-fast: 150ms ease-in-out;
+  --transition-normal: 250ms ease-in-out;
+  --transition-slow: 350ms ease-in-out;
+}
+
+/* ======================================
+   Reset & Base Styles
+   ====================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  color: var(--text-primary);
+  background: var(--page-bg);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+/* ======================================
+   Signup Container
+   ====================================== */
+
+.signup-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: var(--spacing-md);
+  gap: var(--spacing-2xl);
+}
+
+/* ======================================
+   Title Styling
+   ====================================== */
+
+.signup-title {
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  line-height: var(--line-height-tight);
+  color: var(--primary-dark);
+  text-align: center;
+  max-width: 500px;
+  letter-spacing: -0.4px;
+  margin: 0;
+}
+
+/* ======================================
+   Form Styling
+   ====================================== */
+
+.signup-form {
+  width: 100%;
+  max-width: 420px;
+  background: var(--surface);
+  padding: var(--spacing-2xl);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+  animation: slideUp 0.6s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ======================================
+   Label Styling
+   ====================================== */
+
+.signup-label {
+  display: block;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-sm);
+  transition: color var(--transition-fast);
+}
+
+/* ======================================
+   Input Styling
+   ====================================== */
+
+.signup-input {
+  width: 100%;
+  padding: var(--spacing-md) var(--spacing-lg);
+  font-size: var(--font-size-base);
+  font-family: var(--font-family);
+  color: var(--text-primary);
+  background: var(--background);
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-normal);
+  appearance: none;
+  line-height: var(--line-height-normal);
+
+  /* Better spacing for touch targets on mobile */
+  min-height: 44px;
+}
+
+.signup-input::placeholder {
+  color: var(--text-secondary);
+}
+
+.signup-input:hover {
+  border-color: #c5ccd6;
+  background: #fafbfc;
+}
+
+.signup-input:focus {
+  outline: none;
+  border-color: var(--primary-blue);
+  background: var(--background);
+  box-shadow: 0 0 0 3px rgba(30, 58, 95, 0.12);
+}
+
+.signup-input:focus-visible {
+  outline: none;
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 0 3px rgba(30, 58, 95, 0.12);
+}
+
+/* Error state styling */
+.signup-input.error {
+  border-color: var(--error-color);
+  background: var(--error-bg);
+}
+
+.signup-input.error:focus {
+  border-color: var(--error-color);
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+}
+
+/* ======================================
+   Button Styling
+   ====================================== */
+
+.signup-button {
+  padding: var(--spacing-md) var(--spacing-xl);
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  color: var(--text-light);
+  background: var(--primary-blue);
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background var(--transition-normal), box-shadow var(--transition-normal);
+  min-height: 44px;
+  box-shadow: var(--shadow-sm);
+  font-family: var(--font-family);
+  letter-spacing: 0.2px;
+}
+
+.signup-button:hover:not(:disabled) {
+  background: var(--primary-hover);
+  box-shadow: var(--shadow-md);
+}
+
+.signup-button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.signup-button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.signup-button:focus-visible {
+  outline: 2px solid var(--primary-blue);
+  outline-offset: 2px;
+}
+
+/* ======================================
+   Error Message Styling
+   ====================================== */
+
+.error-message {
+  padding: var(--spacing-md);
+  background: var(--error-bg);
+  border-left: 4px solid var(--error-color);
+  color: var(--error-color);
+  font-size: var(--font-size-sm);
+  border-radius: var(--radius-sm);
+  line-height: var(--line-height-normal);
+  animation: shake 0.4s ease-in-out;
+  margin: 0;
+}
+
+@keyframes shake {
+
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  25% {
+    transform: translateX(-8px);
+  }
+
+  75% {
+    transform: translateX(8px);
+  }
+}
+
+/* ======================================
+   Responsive Design - Tablet
+   ====================================== */
+
+@media (min-width: 640px) {
+  .signup-container {
+    padding: var(--spacing-xl);
+  }
+
+  .signup-title {
+    font-size: 2.5rem;
+  }
+
+  .signup-form {
+    padding: var(--spacing-2xl);
+  }
+}
+
+/* ======================================
+   Responsive Design - Desktop
+   ====================================== */
+
+@media (min-width: 1024px) {
+  .signup-container {
+    padding: var(--spacing-2xl);
+  }
+
+  .signup-title {
+    font-size: 3rem;
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .signup-form {
+    max-width: 450px;
+    padding: 3.5rem;
+  }
+}
+
+/* ======================================
+   Accessibility & Motion
+   ====================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: more) {
+  .signup-input {
+    border-width: 3px;
+  }
+
+  .signup-button {
+    border: 2px solid currentColor;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary-dark: #d6deea;
+    --primary-blue: #8aa4c8;
+    --primary-hover: #9bb3d2;
+    --text-primary: #e8eef5;
+    --text-secondary: #a8b3c1;
+    --text-light: #ffffff;
+    --border-color: #2c3a4d;
+    --page-bg: #0f1724;
+    --surface: #1a2433;
+    --background: #1a2433;
+    --error-bg: #3f1d1c;
+    --sidebar-bg: #101826;
+    --sidebar-border: #243049;
+  }
+
+  body {
+    background: var(--page-bg);
+  }
+
+  .signup-form {
+    box-shadow: none;
+  }
+
+  .signup-input {
+    background: #121a27;
+  }
+
+  .signup-input:hover {
+    background: #162030;
+  }
+
+  .signup-input:focus {
+    background: #121a27;
+  }
+}
+
+/* ======================================
+   Print Styles
+   ====================================== */
+
+@media print {
+  body {
+    background: white;
+  }
+
+  .signup-container {
+    min-height: auto;
+  }
+
+  .signup-form {
+    box-shadow: none;
+    border: 1px solid var(--border-color);
+  }
+}

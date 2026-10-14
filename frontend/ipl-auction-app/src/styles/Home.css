@@ -1,0 +1,67 @@
+/* ======================================
+   Home page — layout, grid, loading & error states
+   ====================================== */
+
+.home-wrapper {
+  display: flex;
+  min-height: 100vh;
+  background: var(--page-bg);
+}
+
+.home-content {
+  flex: 1;
+  padding: var(--spacing-xl);
+  background: var(--page-bg);
+}
+
+.home-title {
+  font-size: var(--font-size-2xl);
+  font-weight: 650;
+  margin-bottom: var(--spacing-lg);
+  color: var(--text-primary);
+  letter-spacing: -0.4px;
+}
+
+.home-loading {
+  font-size: var(--font-size-base);
+  color: var(--text-secondary);
+  margin-top: var(--spacing-lg);
+}
+
+.home-error {
+  font-size: var(--font-size-sm);
+  color: var(--error-color);
+  background: var(--error-bg);
+  border-left: 3px solid var(--error-color);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-sm);
+  margin-top: var(--spacing-lg);
+}
+
+.home-empty {
+  font-size: var(--font-size-base);
+  color: var(--text-secondary);
+  margin-top: var(--spacing-lg);
+  text-align: center;
+}
+
+.rooms-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-md);
+}
+
+@media (max-width: 768px) {
+  .home-wrapper {
+    flex-direction: column;
+  }
+
+  .home-content {
+    padding: var(--spacing-md);
+  }
+
+  .rooms-grid {
+    grid-template-columns: 1fr;
+  }
+}
