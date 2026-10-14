@@ -27,6 +27,7 @@ const app = express();
 app.use(express.json());
 
 const allowedOrigins = [
+  "https://ipl-auction-fawn.vercel.app",
   process.env.CLIENT_ORIGIN,
   "http://localhost:5173",
 ].filter((origin): origin is string => Boolean(origin));
