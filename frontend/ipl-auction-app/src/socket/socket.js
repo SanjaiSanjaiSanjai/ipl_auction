@@ -2,7 +2,7 @@ import { io } from "socket.io-client";
 import { getLocalStorage } from "../service/storage/localstorage";
 
 const ACCESS_TOKEN_KEY = import.meta.env.VITE_ACCESS_TOKEN_KEY;
-const socket = io("http://localhost:4000", {
+const socket = io(import.meta.env.VITE_BASE_URL, {
   transports: ["websocket"],
   autoConnect: false,
   withCredentials: true,
