@@ -5,7 +5,7 @@
   display: grid;
   place-items: center;
   background:
-    radial-gradient(circle at 90% 8%, rgba(30, 58, 95, 0.09), transparent 28rem),
+    radial-gradient(circle at 90% 8%, rgba(36, 91, 69, 0.09), transparent 28rem),
     var(--page-bg);
 }
 
@@ -126,7 +126,7 @@
 
 .team-color-control:focus-within {
   border-color: var(--primary-blue);
-  box-shadow: 0 0 0 3px rgba(30, 58, 95, 0.12);
+  box-shadow: 0 0 0 3px rgba(36, 91, 69, 0.14);
 }
 
 .team-color-input {

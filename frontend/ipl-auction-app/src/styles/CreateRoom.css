@@ -1,11 +1,55 @@
 /* Create Room form sits in the dashboard content area, not a full-screen auth page. */
 
 .create-room-content {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+  display: grid;
+  place-items: center;
+  padding: clamp(24px, 5vw, 64px);
+  background: var(--page-bg);
+}
+
+.create-room-shell {
+  width: min(100%, 540px);
+}
+
+.create-room-header {
+  margin-bottom: 24px;
+}
+
+.create-room-header p {
+  margin: 0 0 8px;
+  color: var(--primary-orange-hover);
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+}
+
+.create-room-header h1 {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  letter-spacing: -.04em;
+}
+
+.create-room-header span {
+  display: block;
+  margin-top: 8px;
+  color: var(--text-secondary);
+  font-size: .9rem;
+}
+
+.create-room-form {
+  padding: clamp(20px, 4vw, 32px);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.create-room-form > div:not(.checkbox-group) {
+  display: grid;
+  gap: 7px;
 }
 .checkbox-group {
   margin: 0;
@@ -30,5 +74,10 @@
   margin: 0;
   accent-color: var(--primary-blue);
   cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .create-room-content { place-items: start stretch; padding: 24px 16px 40px; }
+  .create-room-shell { width: 100%; }
 }
 

@@ -44,7 +44,7 @@ export default function Login() {
                 throw new Error("Login did not return the information needed for email verification.");
             }
 
-            if (import.meta.env.VITE_ENV === "development") {
+            if (import.meta.env.VITE_ENV === "development" ) {
                 if (!ACCESS_TOKEN_KEY || !setLocalstorage(ACCESS_TOKEN_KEY, accessToken)) {
                     throw new Error("Could not save the sign-in session.");
                 }

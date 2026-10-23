@@ -5,26 +5,26 @@
 .home-wrapper {
   display: flex;
   min-height: 100vh;
-  background: var(--page-bg);
+  background: var(--color-bg);
 }
 
 .home-content {
   flex: 1;
   padding: var(--spacing-xl);
-  background: var(--page-bg);
+  background: var(--color-bg);
 }
 
 .home-title {
   font-size: var(--font-size-2xl);
   font-weight: 650;
   margin-bottom: var(--spacing-lg);
-  color: var(--text-primary);
+  color: var(--color-primary);
   letter-spacing: -0.4px;
 }
 
 .home-loading {
   font-size: var(--font-size-base);
-  color: var(--text-secondary);
+  color: var(--color-text);
   margin-top: var(--spacing-lg);
 }
 

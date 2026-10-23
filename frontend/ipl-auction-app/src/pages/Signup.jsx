@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../styles/Signup.css";
 import axiosClient from "../axios/apiclient";
 import { setLocalstorage } from "../service/storage/localstorage";
@@ -15,6 +15,7 @@ export default function Signup() {
     const [isSubmitting, setIsSubmitting] = useState(false);
     // API error feedback
     const [errorMessage, setErrorMessage] = useState("");
+    const [showPassword, setShowPassword] = useState(false);
 
     // Navigate to the next page
     const navigate = useNavigate();
@@ -76,44 +77,26 @@ export default function Signup() {
     };
 
     return (
-        <div className="signup-container">
-            <h1 className="signup-title">IPL Auction Signup</h1>
-            <form className="signup-form" onSubmit={handleSubmit}>
-                <label className="signup-label" htmlFor="username">Full Name</label>
-                <input
-                    id="name"
-                    type="text"
-                    className="signup-input"
-                    value={username}
-                    onChange={(e) => setUserName(e.target.value)}
-                    placeholder="Enter your name"
-                    required
-                />
-                <label className="signup-label" htmlFor="email">Email Address</label>
-                <input
-                    id="email"
-                    type="email"
-                    className="signup-input"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="you@example.com"
-                    required
-                />
-                <label className="signup-label" htmlFor="password">Password</label>
-                <input
-                    id="password"
-                    type="password"
-                    className="signup-input"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    placeholder="Enter password"
-                    required
-                />
-                {errorMessage && <p className="error-message">{errorMessage}</p>}
-                <button type="submit" className="signup-button" disabled={isSubmitting}>
-                    {isSubmitting ? "Submitting…" : "Sign Up"}
-                </button>
-            </form>
-        </div>
+        <main className="auth-page">
+            <aside className="auth-brand-panel">
+                <div className="auth-brand"><span className="auth-brand-mark">IPL</span> Auction Room</div>
+                <div className="auth-brand-copy"><p>Live fantasy auction</p><h2>Set up your next auction in minutes.</h2></div>
+                <p className="auth-brand-footer">A focused space for every room, team, and winning bid.</p>
+            </aside>
+            <section className="auth-content" aria-labelledby="signup-title">
+                <div className="auth-card">
+                    <h1 className="auth-heading" id="signup-title">Create your account</h1>
+                    <p className="auth-subheading">Get started with your IPL auction workspace.</p>
+                    <form className="signup-form" onSubmit={handleSubmit}>
+                        <div className="auth-field"><label className="signup-label" htmlFor="name">Full name</label><input id="name" type="text" className="signup-input" value={username} onChange={(e) => setUserName(e.target.value)} placeholder="Enter your name" autoComplete="name" required /></div>
+                        <div className="auth-field"><label className="signup-label" htmlFor="email">Email address</label><input id="email" type="email" className="signup-input" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@example.com" autoComplete="email" required /></div>
+                        <div className="auth-field"><label className="signup-label" htmlFor="password">Password</label><div className="password-control"><input id="password" type={showPassword ? "text" : "password"} className="signup-input" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Create a password" autoComplete="new-password" required /><button className="password-toggle" type="button" onClick={() => setShowPassword((visible) => !visible)} aria-label={showPassword ? "Hide password" : "Show password"}>{showPassword ? "Hide" : "Show"}</button></div></div>
+                        {errorMessage && <p className="error-message" role="alert">{errorMessage}</p>}
+                        <button type="submit" className="signup-button" disabled={isSubmitting}>{isSubmitting ? "Creating account…" : "Create account"}</button>
+                    </form>
+                    <p className="auth-footer">Already have an account? <Link className="auth-link" to="/login">Sign in</Link></p>
+                </div>
+            </section>
+        </main>
     );
 }

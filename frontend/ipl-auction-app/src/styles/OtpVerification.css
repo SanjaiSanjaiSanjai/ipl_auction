@@ -5,7 +5,7 @@
   padding: 28px 18px;
   background:
     radial-gradient(ellipse at 18% 12%, rgba(154, 123, 60, 0.12), transparent 35%),
-    radial-gradient(ellipse at 90% 92%, rgba(30, 58, 95, 0.1), transparent 34%),
+    radial-gradient(ellipse at 90% 92%, rgba(36, 91, 69, 0.1), transparent 34%),
     var(--page-bg);
 }
 
@@ -139,7 +139,7 @@
 .otp-input:focus {
   border-color: var(--primary-blue);
   background: var(--surface);
-  box-shadow: 0 0 0 3px rgba(30, 58, 95, 0.12);
+  box-shadow: 0 0 0 3px rgba(36, 91, 69, 0.14);
 }
 
 .otp-help {
@@ -216,7 +216,7 @@
 .otp-back-link a {
   color: var(--primary-blue);
   font-weight: 700;
-  text-decoration-color: rgba(30, 58, 95, 0.35);
+  text-decoration-color: rgba(36, 91, 69, 0.35);
   text-underline-offset: 3px;
 }
 
@@ -247,11 +247,11 @@
   }
 
   .otp-input {
-    border-color: #3a4759;
-    background: #121a27;
+    border-color: #30463c;
+    background: #142019;
   }
 
   .otp-input:focus {
-    background: #1a2433;
+    background: #1b2921;
   }
 }

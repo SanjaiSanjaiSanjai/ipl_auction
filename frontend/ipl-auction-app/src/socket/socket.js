@@ -6,33 +6,62 @@ const socket = io(import.meta.env.VITE_BASE_URL, {
   transports: ["websocket"],
   autoConnect: false,
   withCredentials: true,
-  auth: (callback) => {
-    callback({ token: getLocalStorage(ACCESS_TOKEN_KEY) });
-  },
+  // Do not force WebSocket only: polling supports proxies, then upgrades when possible.
+  transports: ["polling", "websocket"],
+  reconnection: true,
+  reconnectionAttempts: 5,
+  reconnectionDelay: 750,
+  reconnectionDelayMax: 4000,
+  auth: (callback) => callback({ token: ACCESS_TOKEN_KEY ? getLocalStorage(ACCESS_TOKEN_KEY) : null }),
 });
 
-// Connection test
+export const connectSocket = () => {
+  const token = ACCESS_TOKEN_KEY ? getLocalStorage(ACCESS_TOKEN_KEY) : null;
+  if (!token || socket.connected || socket.active) return socket;
+
+  socket.connect();
+  return socket;
+};
+
+export const waitForSocketConnection = (timeout = 5000) => {
+  if (socket.connected) return Promise.resolve();
+
+  connectSocket();
+  return new Promise((resolve, reject) => {
+    const timer = window.setTimeout(() => {
+      cleanup();
+      reject(new Error("Socket connection timed out."));
+    }, timeout);
+
+    const cleanup = () => {
+      window.clearTimeout(timer);
+      socket.off("connect", onConnect);
+      socket.off("connect_error", onError);
+    };
+    const onConnect = () => {
+      cleanup();
+      resolve();
+    };
+    const onError = (error) => {
+      cleanup();
+      reject(error);
+    };
+
+    socket.once("connect", onConnect);
+    socket.once("connect_error", onError);
+  });
+};
+
 socket.on("connect", () => {
-    console.log("✅ SOCKET CONNECTED");
-    console.log("Socket ID:", socket.id);
+  console.info("Socket connected", socket.id);
 });
 
-// Connection error
 socket.on("connect_error", (error) => {
-    console.error("❌ SOCKET CONNECTION ERROR:", error.message);
+  console.error("Socket connection error:", error.message);
 });
 
-// Disconnect
 socket.on("disconnect", (reason) => {
-    console.log("❌ SOCKET DISCONNECTED:", reason);
+  console.info("Socket disconnected:", reason);
 });
 
-// Receive ANY Socket.IO event
-socket.onAny((event, ...args) => {
-    console.log("📥 SOCKET EVENT RECEIVED:", event, args);
-});
-
-socket.on("ROOM_STARTED", (data) => {
-    console.log("🔥 ROOM_STARTED:", data);
-});
 export default socket;

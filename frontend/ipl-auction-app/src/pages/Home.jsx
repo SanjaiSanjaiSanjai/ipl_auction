@@ -3,7 +3,7 @@ import Sidebar from "../components/sidebar/Sidebar";
 import RoomCard from "../components/cards/RoomCard";
 import axiosClient from "../axios/apiclient";
 import "../styles/Home.css";
-import socket from "../socket/socket";
+import socket, { connectSocket } from "../socket/socket";
 import { useNavigate } from "react-router-dom";
 
 // Public rooms API endpoint
@@ -102,10 +102,7 @@ function Home() {
     // The socket auth callback will read the saved access token
     // when the connection is initiated.
     //
-    if (!socket.connected) {
-      console.log("Connecting Socket.IO from Home...");
-      socket.connect();
-    }
+    connectSocket();
 
     // ----------------------------------------------------------
     // 2. FETCH PUBLIC ROOMS

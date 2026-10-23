@@ -107,10 +107,10 @@ export const RegisterRoomSocket = (io: Server, socket: Socket) => {
         return;
       }
 
+      acknowledge?.({ ok: true });
       io.to(normalizedRoomId).emit("ROOM_STARTED", {
         roomId: normalizedRoomId,
       });
-      acknowledge?.({ ok: true });
     } catch (error) {
       console.error(
         `[socket] Failed to start team selection for room ${normalizedRoomId}:`,

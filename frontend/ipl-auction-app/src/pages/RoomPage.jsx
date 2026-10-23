@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axiosClient from "../axios/apiclient";
-import socket from "../socket/socket";
+import socket, { waitForSocketConnection } from "../socket/socket";
 import "../styles/RoomPage.css";
 import { getLocalStorage } from "../service/storage/localstorage";
 import { jwtDecode } from "jwt-decode";
@@ -228,7 +228,7 @@ function RoomPage() {
    * Only the host sees this button. It becomes clickable when
    * the room reaches maxPlayers and navigates to the team-selection page.
    */
-  const handleStartTeamSelection = () => {
+  const handleStartTeamSelection = async () => {
     if (!isHost || !isRoomFull || startingTeamSelection) {
       return;
     }
@@ -240,6 +240,16 @@ function RoomPage() {
 
     setStartingTeamSelection(true);
     setStartTeamSelectionError("");
+    try {
+      await waitForSocketConnection();
+    } catch {
+      setStartingTeamSelection(false);
+      setStartTeamSelectionError(
+        "Could not connect to the live auction service. Please try again.",
+      );
+      return;
+    }
+
     socket.timeout(5000).emit(
       "ROOM_START",
       { roomId },
@@ -343,7 +353,7 @@ function RoomPage() {
             </div>
 
             <div className="room-player-list">
-              {players.map((player, index) => (
+              {players.map((player) => (
                 <article className="room-player" key={player.userId}>
                   <span className="room-player-avatar" aria-hidden="true">
                     {player.username?.slice(0, 1).toUpperCase() ?? "P"}

@@ -98,8 +98,12 @@ function CreateRoom() {
             <Sidebar />
 
             <main className="create-room-content">
-                <h1 className="home-title">Create Room</h1>
-
+                <div className="create-room-shell">
+                    <header className="create-room-header">
+                        <p>AUCTION ROOM</p>
+                        <h1>Create a room</h1>
+                        <span>Set the room details and invite your players when you are ready.</span>
+                    </header>
                 <form className="signup-form create-room-form" onSubmit={handleSubmit}>
                     <div>
                         <label className="signup-label" htmlFor="room-name">Room Name</label>
@@ -167,6 +171,7 @@ function CreateRoom() {
                         {isSubmitting ? "Creating…" : "Create Room"}
                     </button>
                 </form>
+                </div>
             </main>
         </div>
     );
